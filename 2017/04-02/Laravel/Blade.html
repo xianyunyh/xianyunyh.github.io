@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="php,laravel，Blade," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Blade 模板">
+<meta name="keywords" content="php,laravel，Blade">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blade 模板">
+<meta property="og:url" content="http://xianyunyh.github.io/2017/04-02/Laravel/Blade.html">
+<meta property="og:site_name" content="闲云野鹤的博客">
+<meta property="og:description" content="Blade 模板">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-17T15:57:57.031Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blade 模板">
+<meta name="twitter:description" content="Blade 模板">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xianyunyh.github.io/2017/04-02/Laravel/Blade.html"/>
+
+
+
+
+
+  <title>Blade 模板 | 闲云野鹤的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">闲云野鹤的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xianyunyh.github.io/2017/04-02/Laravel/Blade.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="闲云野鹤">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/statics/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲云野鹤的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Blade 模板</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-02T00:00:02+08:00">
+                2017-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Blade 模板
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Blade-模板"><a href="#Blade-模板" class="headerlink" title="Blade 模板"></a>Blade 模板</h2><blockquote>
+<p>Blade 视图文件使用 .blade.php 做为扩展名，通常保存于 resources/views 文件夹内。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><ol>
+<li>定义页面布局</li>
+</ol>
+<pre><code>&lt;!-- 文件保存于 resources/views/layouts/master.blade.php --&gt;
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;应用程序名称 - @yield(&apos;title&apos;)&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        @section(&apos;sidebar&apos;)
+            这是主要的侧边栏。
+        @show
+
+        &lt;div class=&quot;container&quot;&gt;
+            @yield(&apos;content&apos;)
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><blockquote>
+<p>@section 与 @yield 命令。正如其名，@section 命令定义一个内容区块，而 @yield 命令被用来 “显示指定区块” 的内容</p>
+</blockquote>
+<ol>
+<li>继承页面模板</li>
+</ol>
+<blockquote>
+<p>你可以使用 Blade 的 @extends 命令指定子页面应该「继承」哪一个布局。当视图 @extends Blade 的布局之后，即可使用 @section 命令将内容注入于布局的区块中</p>
+</blockquote>
+<pre><code>&lt;!-- 保存于 resources/views/child.blade.php --&gt;
+
+@extends(&apos;layouts.master&apos;)
+
+@section(&apos;title&apos;, &apos;页面标题&apos;)
+
+@section(&apos;sidebar&apos;)
+    @parent
+
+    &lt;p&gt;这边会附加在主要的侧边栏。&lt;/p&gt;
+@endsection
+
+@section(&apos;content&apos;)
+    &lt;p&gt;这是我的主要内容。&lt;/p&gt;
+@endsection
+</code></pre><blockquote>
+<p>sidebar 区块利用了 @parent 命令增加（而不是覆盖）内容至布局的侧边栏。@parent 命令会在视图输出时被置换成布局的内容。</p>
+</blockquote>
+<p>###　显示数据</p>
+<pre><code>    Route::get(&apos;greeting&apos;, function () {
+    return view(&apos;welcome&apos;, [&apos;name&apos; =&gt; &apos;Samantha&apos;]);
+});
+    Hello, {{ $name }}//view视图文件
+</code></pre><h3 id="Blade-与-JavaScript-框架"><a href="#Blade-与-JavaScript-框架" class="headerlink" title="Blade 与 JavaScript 框架"></a>Blade 与 JavaScript 框架</h3><blockquote>
+<p>可以使用 @ 符号来告知 Blade 渲染引擎该表达式应该维持原样</p>
+</blockquote>
+<h3 id="显示未转义的数据"><a href="#显示未转义的数据" class="headerlink" title="显示未转义的数据"></a>显示未转义的数据</h3><pre><code>Hello, {!! $name !!}.
+</code></pre><h3 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h3><pre><code>@if($a&gt;10)
+&gt;10
+@elseif($a&gt;20)
+&gt;20
+@else
+0
+@endif
+
+@for ($i = 0; $i &lt; 10; $i++)
+    目前的值为 {{ $i }}
+@endfor
+
+@foreach ($users as $user)
+    &lt;p&gt;此用户为 {{ $user->id }}&lt;/p&gt;
+@endforeach
+
+@forelse ($users as $user)
+    &lt;li&gt;{{ $user->name }}&lt;/li&gt;
+@empty
+    &lt;p&gt;没有用户&lt;/p&gt;
+@endforelse
+
+@while (true)
+    &lt;p&gt;我永远都在跑循环。&lt;/p&gt;
+@endwhile
+</code></pre><h3 id="引入子视图"><a href="#引入子视图" class="headerlink" title="引入子视图"></a>引入子视图</h3><pre><code>@include(&apos;layouts.footer&apos;)
+</code></pre><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>Blade 也允许在页面中定义注释，然而，跟 HTML 的注释不同的是，Blade 注释不会被包含在应用程序返回的 HTML 内：</p>
+<pre><code>{{-- 此注释将不会出现在渲染后的 HTML --}}
+</code></pre><h3 id="视图堆栈"><a href="#视图堆栈" class="headerlink" title="视图堆栈"></a>视图堆栈</h3><p>Blade 允许你已命名的 视图堆栈 执行入栈操作：</p>
+<pre><code>@push(&apos;scripts&apos;)
+&lt;script src=&quot;/example.js&quot;&gt;&lt;/script&gt;
+@endpush
+</code></pre><p>在模板的其他地方 @stack 会把 视图堆栈 里的所有视图显示出来：</p>
+<pre><code>&lt;head&gt;
+&lt;!-- 头部内容 --&gt;
+
+@stack(&apos;scripts&apos;)
+&lt;/head&gt;
+</code></pre><h3 id="服务注入"><a href="#服务注入" class="headerlink" title="服务注入"></a>服务注入</h3><p>@inject 命令可以取出 Laravel 服务容器 中的服务。传递给 @inject 的第一个参数为置放该服务的变量名称，而第二个参数为你想要解析的服务的类或是接口的名称：</p>
+<pre><code>@inject(&apos;metrics&apos;, &apos;App\Services\MetricsService&apos;)
+
+&lt;div&gt;
+    每月收入：{{ $metrics->monthlyRevenue() }}。
+&lt;/div&gt;
+</code></pre><h3 id="扩充-Blade"><a href="#扩充-Blade" class="headerlink" title="扩充 Blade"></a>扩充 Blade</h3><p>Blade 甚至允许你自定义命令，你可以使用 directive 方法注册命令。当 Blade 编译器遇到该命令时，它将会带参数调用提供的回调函数。</p>
+<pre><code>public function boot()
+{
+    Blade::directive(&apos;datetime&apos;, function($expression) {
+        return &quot;&lt;?php echo with{$expression}-&gt;format(&apos;m/d/Y H:i&apos;); ?&gt;&quot;;
+    });
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果本文对您有所帮助，您可以点打赏击请作者喝杯咖啡。</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/statics/images/wx.png" alt="闲云野鹤 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/statics/images/alipay.jpg" alt="闲云野鹤 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/laravel，Blade/" rel="tag"># laravel，Blade</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04-01/Laravel/01-LifeCycle.html" rel="next" title="Laravel的生命周期">
+                <i class="fa fa-chevron-left"></i> Laravel的生命周期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04-03/Laravel/Cache.html" rel="prev" title="Laravel 缓存">
+                Laravel 缓存 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/statics/images/logo.jpg"
+                alt="闲云野鹤" />
+            
+              <p class="site-author-name" itemprop="name">闲云野鹤</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade-模板"><span class="nav-number">1.</span> <span class="nav-text">Blade 模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模板继承"><span class="nav-number">1.1.</span> <span class="nav-text">模板继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blade-与-JavaScript-框架"><span class="nav-number">1.2.</span> <span class="nav-text">Blade 与 JavaScript 框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示未转义的数据"><span class="nav-number">1.3.</span> <span class="nav-text">显示未转义的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制结构"><span class="nav-number">1.4.</span> <span class="nav-text">控制结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入子视图"><span class="nav-number">1.5.</span> <span class="nav-text">引入子视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">1.6.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图堆栈"><span class="nav-number">1.7.</span> <span class="nav-text">视图堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务注入"><span class="nav-number">1.8.</span> <span class="nav-text">服务注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩充-Blade"><span class="nav-number">1.9.</span> <span class="nav-text">扩充 Blade</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">闲云野鹤</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
